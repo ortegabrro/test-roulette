@@ -1,25 +1,33 @@
 package com.apuestas.backend.models;
 
+import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.apuestas.backend.models.enums.TypeState;
 
-public class Roulette {
+public class Roulette implements Serializable {
 	
-	
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
 	private TypeState typeState;
+	private static AtomicInteger atomicInteger = new AtomicInteger(0);
 	
-	
-	public Roulette(String id, TypeState typeState) {
+	public Roulette() {
 		super();
-		this.id = id;
-		this.typeState = typeState;
+		this.id= atomicInteger.incrementAndGet();
 	}
-	public String getId() {
+	
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
+
 	public TypeState getTypeState() {
 		return typeState;
 	}
